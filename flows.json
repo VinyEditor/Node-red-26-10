@@ -1,0 +1,399 @@
+[
+    {
+        "id": "be8f686f11743acc",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "ce2b6fa9d4e50963",
+        "type": "reddit-credentials",
+        "username": "Gemini-Viny",
+        "user_agent": "nodered-test",
+        "auth_type": "username_password",
+        "name": "BotBuscaReddit"
+    },
+    {
+        "id": "3a4df4876b3422ed",
+        "type": "get",
+        "z": "be8f686f11743acc",
+        "name": "",
+        "reddit": "ce2b6fa9d4e50963",
+        "content_type": "submission",
+        "submission_source": "subreddit",
+        "comment_source": "subreddit",
+        "pm_source": "inbox",
+        "content_source": "saved",
+        "subreddit": "{{payload}}[",
+        "user": "",
+        "limit": "3",
+        "sort": "hot",
+        "time": "hour",
+        "fetch_all": "false",
+        "submission": "",
+        "depth": "",
+        "content_id": "",
+        "x": 540,
+        "y": 160,
+        "wires": [
+            [
+                "82002b87c17ab5f2",
+                "10a6a58003928dbb"
+            ]
+        ]
+    },
+    {
+        "id": "bcd68bd7547c2a02",
+        "type": "telegram receiver",
+        "z": "be8f686f11743acc",
+        "name": "",
+        "bot": "",
+        "saveDataDir": "",
+        "filterCommands": false,
+        "x": 90,
+        "y": 320,
+        "wires": [
+            [
+                "b71930635dbbdb12"
+            ],
+            [
+                "d553b4abde3289dd",
+                "aab13e8393a6221d"
+            ]
+        ]
+    },
+    {
+        "id": "b71930635dbbdb12",
+        "type": "function",
+        "z": "be8f686f11743acc",
+        "name": "ProcIN",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 150,
+        "y": 160,
+        "wires": [
+            [
+                "0fb91235bd4f653b",
+                "ed7ce0adee36afe1"
+            ]
+        ]
+    },
+    {
+        "id": "e4481b20a811ced1",
+        "type": "function",
+        "z": "be8f686f11743acc",
+        "name": "ProcOUT",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 820,
+        "y": 280,
+        "wires": [
+            [
+                "84ef3b518c4b8280",
+                "64f9b20534c1a84f"
+            ]
+        ]
+    },
+    {
+        "id": "d553b4abde3289dd",
+        "type": "function",
+        "z": "be8f686f11743acc",
+        "name": "Acesso Negado",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 580,
+        "y": 400,
+        "wires": [
+            [
+                "64f9b20534c1a84f"
+            ]
+        ]
+    },
+    {
+        "id": "82002b87c17ab5f2",
+        "type": "function",
+        "z": "be8f686f11743acc",
+        "name": "ProcIn NLU",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 910,
+        "y": 160,
+        "wires": [
+            [
+                "99307adf88c3e319",
+                "ed2fa639131d75ba"
+            ]
+        ]
+    },
+    {
+        "id": "0fb91235bd4f653b",
+        "type": "debug",
+        "z": "be8f686f11743acc",
+        "name": "Pesquisa",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 240,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "5e91a1462e487e88",
+        "type": "debug",
+        "z": "be8f686f11743acc",
+        "name": "Saida EN",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 480,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "10a6a58003928dbb",
+        "type": "debug",
+        "z": "be8f686f11743acc",
+        "name": "Saida Pesquisa",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 740,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "99307adf88c3e319",
+        "type": "debug",
+        "z": "be8f686f11743acc",
+        "name": "Entrada NLU",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 970,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "64f9b20534c1a84f",
+        "type": "telegram sender",
+        "z": "be8f686f11743acc",
+        "name": "",
+        "bot": "",
+        "haserroroutput": false,
+        "outputs": 1,
+        "x": 990,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ed7ce0adee36afe1",
+        "type": "watson-translator",
+        "z": "be8f686f11743acc",
+        "name": "WLT pt2en",
+        "action": "translate",
+        "basemodel": "",
+        "domain": "news",
+        "srclang": "en",
+        "destlang": "fr",
+        "apikey": "",
+        "custom": "",
+        "domainhidden": "",
+        "srclanghidden": "",
+        "destlanghidden": "",
+        "basemodelhidden": "",
+        "customhidden": "",
+        "filetype": "forcedglossary",
+        "trainid": "",
+        "lgparams2": true,
+        "service-endpoint": "",
+        "x": 310,
+        "y": 180,
+        "wires": [
+            [
+                "3a4df4876b3422ed"
+            ]
+        ]
+    },
+    {
+        "id": "3f8ee8c769682121",
+        "type": "watson-translator",
+        "z": "be8f686f11743acc",
+        "name": "WLT en2pt",
+        "action": "translate",
+        "basemodel": "",
+        "domain": "news",
+        "srclang": "en",
+        "destlang": "fr",
+        "apikey": "",
+        "custom": "",
+        "domainhidden": "",
+        "srclanghidden": "",
+        "destlanghidden": "",
+        "basemodelhidden": "",
+        "customhidden": "",
+        "filetype": "forcedglossary",
+        "trainid": "",
+        "lgparams2": true,
+        "service-endpoint": "",
+        "x": 590,
+        "y": 280,
+        "wires": [
+            [
+                "e4481b20a811ced1",
+                "4b922ea284271af9"
+            ]
+        ]
+    },
+    {
+        "id": "ed2fa639131d75ba",
+        "type": "natural-language-understanding",
+        "z": "be8f686f11743acc",
+        "name": "NLU",
+        "categories": false,
+        "limitcategories": "3",
+        "classifications": false,
+        "classifications-model": "8",
+        "concepts": false,
+        "maxconcepts": "8",
+        "doc-emotion": false,
+        "doc-emotion-target": "",
+        "doc-sentiment": false,
+        "doc-sentiment-target": "",
+        "entity": false,
+        "entity-emotion": false,
+        "entity-sentiment": false,
+        "maxentities": "50",
+        "keyword": false,
+        "keyword-emotion": false,
+        "keyword-sentiment": false,
+        "maxkeywords": "50",
+        "metadata": false,
+        "relation": false,
+        "semantic": false,
+        "semantic-entities": false,
+        "semantic-keywords": false,
+        "maxsemantics": "50",
+        "limittextcharacters": "0",
+        "syntax": false,
+        "syntax-sentences": false,
+        "syntax-tokens-lemma": false,
+        "syntax-tokens-pos": false,
+        "service-endpoint": "",
+        "x": 330,
+        "y": 280,
+        "wires": [
+            [
+                "3f8ee8c769682121",
+                "5427c1c75db33743"
+            ]
+        ]
+    },
+    {
+        "id": "84ef3b518c4b8280",
+        "type": "debug",
+        "z": "be8f686f11743acc",
+        "name": "Saida",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1010,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "aab13e8393a6221d",
+        "type": "debug",
+        "z": "be8f686f11743acc",
+        "name": "Entrada",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 340,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "5427c1c75db33743",
+        "type": "debug",
+        "z": "be8f686f11743acc",
+        "name": "Saida NLU",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 590,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "4b922ea284271af9",
+        "type": "debug",
+        "z": "be8f686f11743acc",
+        "name": "Saida PT",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 840,
+        "y": 500,
+        "wires": []
+    }
+]
